@@ -5,25 +5,39 @@ public class Materia {
 		private Examen numeroEx1;
 		private Examen numeroEx2;
 	//Metodos
-	public Boolean Evaluar(Integer numeroEx, Integer nota){
-	switch(numeroEx){
-	case 1: this.numeroEx1 = new Examen();
-			return numeroEx1.Calificar(nota);
-	case 2: this.numeroEx2 = new Examen();
-			return numeroEx2.Calificar(nota);
-	default: return false;
+	public void Evaluar(Integer numeroEx, Integer nota) throws Exception{
+
+		if(numeroEx!=1&&numeroEx!=2){
+			throw new Exception("Examen Incorrecto");
+		}
+		else {
+			if(numeroEx==1) {
+					numeroEx1 = new Examen();
+					this.numeroEx1.Calificar(nota);
+			}
+			else {
+				numeroEx1 = new Examen();
+				this.numeroEx2.Calificar(nota);
+			}
 		}
 	}
-	public Integer getExamen(Integer numEx){
-		switch(numEx){
-		case 1:	return numeroEx1.getNota();
-		case 2: return numeroEx2.getNota();
-		default: return 0;
+	public Integer getExamen(Integer numEx)throws Exception{
+
+		if(numEx==1||numEx==2){
+			if(numEx==1) {
+				return this.numeroEx1.getNota();
+			}
+			else {
+				return this.numeroEx2.getNota();
+			}
+		}
+		else {
+			throw new Exception("Numero de examen Incorrecto");
 		}
 	}
+}
 
-
-}	
+	
 		
 		
 

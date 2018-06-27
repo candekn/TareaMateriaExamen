@@ -6,23 +6,17 @@ import org.junit.Test;
 
 public class TesteoMateriaExamen {
 
-	@Test
-	public void testQueDevuelveUnBooleanSiLaNotaEstaEntre1y10() {
-		Materia test1 = new Materia();
-		assertTrue(test1.Evaluar(1, 8));
-	}
 	@Test 
-	public void testQueMuestraLasNotas(){
-		Materia test2 = new Materia();
-		test2.Evaluar(2, 10);
-		test2.Evaluar(1, 5);
-		Integer esperado=10;
-		assertEquals(esperado, test2.getExamen(2));
+	public void testQueMuestraLasNotas() throws Exception{
+		Materia test1 = new Materia();
+		test1.Evaluar(1, 7);
+		Integer esperado = 7;
+		assertEquals(esperado,test1.getExamen(1));
 	}
 	@Test
-	public void testQueSiPongoUnNumeroFueraDeRangoDevuelvaUnBoolean(){
-		Materia test3 = new Materia();
-		assertFalse(test3.Evaluar(1, 20));
+	(expected=Exception.class) //Esto se usa para verificar que se lance la exception
+	public void testErrorEnNota() throws Exception{
+		Materia test2 = new Materia();
+		test2.Evaluar(2, 28);
 	}
-
 }
